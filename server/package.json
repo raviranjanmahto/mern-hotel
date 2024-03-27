@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "hotel booking app in MERN Stack",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raviranjanmahto/mern-hotel.git"
+  },
+  "author": "Raviranjan Mahto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raviranjanmahto/mern-hotel/issues"
+  },
+  "homepage": "https://github.com/raviranjanmahto/mern-hotel#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3"
+  }
+}
