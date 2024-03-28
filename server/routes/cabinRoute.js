@@ -6,6 +6,8 @@ const userControllers = require("../controllers/userController");
 router.use(userControllers.protectApi);
 
 router.post("/createCabin", cabinControllers.createCabinApi);
+router.patch("/editCabin/:id", cabinControllers.editCabinApi);
 router.get("/getCabins", cabinControllers.getCabinsApi);
+router.delete("/deleteCabin/:id", cabinControllers.deleteCabinApi);
 
 module.exports = router;
