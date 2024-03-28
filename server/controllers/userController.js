@@ -21,7 +21,7 @@ const createSendToken = (user, statusCode, res) => {
 
   res.cookie("token", token, cookieOption);
 
-  res.status(statusCode).json({ status: "success", token, data: user });
+  res.status(statusCode).json({ status: "success", token, user });
 };
 
 exports.signUpApi = catchAsync(async (req, res, next) => {
@@ -33,7 +33,7 @@ exports.signUpApi = catchAsync(async (req, res, next) => {
   const user = new User({ fullName, email, password });
   await user.save();
   user.password = undefined;
-  res.status(201).json({ status: "success", data: user });
+  res.status(201).json({ status: "success", user });
 });
 
 exports.loginApi = catchAsync(async (req, res, next) => {
@@ -47,6 +47,20 @@ exports.loginApi = catchAsync(async (req, res, next) => {
 
 exports.getCurrentUserApi = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id);
+  res.status(200).json({ status: "success", user });
+});
+
+exports.updateCurrentUserApi = catchAsync(async (req, res, next) => {
+  const { fullName, avatar, password } = req.body;
+  const user = await User.findOne({ _id: req.user.id });
+
+  // Update user's fields
+  if (fullName) user.fullName = fullName;
+  if (avatar) user.avatar = avatar;
+  if (password) user.password = password;
+
+  // Save the updated user
+  await user.save();
   res.status(200).json({ status: "success", user });
 });
 

@@ -10,5 +10,6 @@ router.post("/signup", userControllers.signUpApi);
 router.post("/logout", userControllers.logoutApi);
 
 router.get("/getCurrentUser", userControllers.getCurrentUserApi);
+router.patch("/updateCurrentUser", userControllers.updateCurrentUserApi);
 
 module.exports = router;
