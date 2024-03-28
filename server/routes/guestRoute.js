@@ -6,6 +6,7 @@ const userControllers = require("../controllers/userController");
 router.use(userControllers.protectApi);
 
 router.post("/createGuest", guestControllers.createGuestApi);
+router.patch("/editGuest/:id", guestControllers.editGuestApi);
 router.get("/getGuest", guestControllers.getGuestApi);
 router.delete("/deleteGuest/:id", guestControllers.deleteGuestApi);
 

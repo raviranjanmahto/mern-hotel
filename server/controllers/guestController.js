@@ -11,7 +11,7 @@ exports.createGuestApi = catchAsync(async (req, res) => {
     countryFlag,
   });
   await newGuest.save();
-  res.status(201).json({ status: "success", data: newGuest });
+  res.status(201).json({ status: "success", newGuest });
 });
 
 exports.getGuestApi = catchAsync(async (req, res) => {
@@ -51,4 +51,19 @@ exports.getGuestApi = catchAsync(async (req, res) => {
 exports.deleteGuestApi = catchAsync(async (req, res) => {
   const guest = await Guest.findOneAndDelete({ _id: req.params.id });
   res.status(200).json({ status: "success" });
+});
+
+exports.editGuestApi = catchAsync(async (req, res) => {
+  const { fullName, email, nationalID, nationality, countryFlag } = req.body;
+  const guest = await Guest.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      fullName,
+      email,
+      nationalID,
+      nationality,
+      countryFlag,
+    }
+  );
+  res.status(200).json({ status: "success", guest });
 });
